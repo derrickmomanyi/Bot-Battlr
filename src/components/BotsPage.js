@@ -14,8 +14,7 @@ function BotsPage() {
       .then((bots) => setBots(bots))
    }, [])
 
-   console.log(bots);
- 
+    
    if(!bots){
     return <h2>Just a while, be patient a little</h2>
    }
@@ -39,13 +38,19 @@ function BotsPage() {
      //click function to add & remove bots to bot army when clicked
    function addBot(bot, inArmy) {
     //inArmy === true if bot is already in botArmy
+
     if (botArmy.includes(bot) && inArmy === true) {
-      setBotArmy(botArmy.filter(({id}) => id !== bot.id));
       //remove bot from botArmy state
+
+      setBotArmy(botArmy.filter(({id}) => id !== bot.id));
+      
     }
-     else if (botArmy.includes(bot) === false) {
-        setBotArmy(botArmy => [...botArmy, bot])
-        //add to botarmy
+
+     else if (!botArmy.includes(bot) && inArmy === false) {
+       //add to botArmy state
+
+        setBotArmy([...botArmy, bot])
+       
     }
 }
 

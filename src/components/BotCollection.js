@@ -5,7 +5,7 @@ function BotCollection({bots, addBot, deleteBot}) {
 
 
       const displayBots = bots.map((bot) => (
-      <BotCard key={bot.id} bot = {bot} addBot = {addBot} inArmy = {false} deleteBot = {deleteBot}/>
+      <BotCard key = {bot.id} bot = {bot} addBot = {addBot} inArmy = {false} deleteBot = {deleteBot}/>
      ))
 
 
