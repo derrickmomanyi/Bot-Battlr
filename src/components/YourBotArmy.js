@@ -1,9 +1,9 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function YourBotArmy({botArmy}) {
+function YourBotArmy({botArmy, addBot, deleteBot}) {
     const displayArmyBots = botArmy.map((bot) => (
-      <BotCard key = {bot.id} bot = {bot}/>
+      <BotCard key = {bot.id} bot = {bot} inArmy = {true} deleteBot = {deleteBot} addBot = {addBot}/>
     ))
 
     console.log(botArmy);

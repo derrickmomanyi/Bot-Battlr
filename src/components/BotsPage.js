@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
+import BotCard from "./BotCard";
 
 function BotsPage() {
       
@@ -12,25 +13,43 @@ function BotsPage() {
       .then((res) => res.json())
       .then((bots) => setBots(bots))
    }, [])
+
+   console.log(bots);
  
    if(!bots){
     return <h2>Just a while, be patient a little</h2>
    }
+   
 
-   function addBot(bot, army) {
-    //army === true if bot is already in botArmy
-    if (!botArmy.includes(bot)) {
-        setBotArmy([...botArmy, bot])
+   function deleteBot(bot){
+    fetch(`http://localhost:8002/bots/${bot.id}`,{
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+     .then((res) => {
+      setBots(bots.filter(({id}) => id !== bot.id));
+      setBotArmy(botArmy.filter(({id}) => id !== bot.id))
+      console.log(res);
+     })
+   }
+
+   function addBot(bot, inArmy) {
+    //inArmy === true if bot is already in botArmy
+    if (botArmy.includes(bot) && inArmy === true) {
+      setBotArmy(botArmy.filter(({id}) => id !== bot.id));
+      //remove bot from BotArmy state
     }
-     else if (botArmy.includes(bot) && army) {
-        setBotArmy(botArmy.filter(({id}) => id !== bot.id));
+     else if (botArmy.includes(bot) === false) {
+        setBotArmy(botArmy => [...botArmy, bot])
     }
 }
 
   return (
     <div>
-      <YourBotArmy botArmy = {botArmy} addBot = {addBot}/>
-      <BotCollection bots = {bots} addBot = {addBot}/>
+      <YourBotArmy botArmy = {botArmy} addBot = {addBot} deleteBot = {deleteBot}/>
+      <BotCollection bots = {bots} addBot = {addBot} deleteBot = {deleteBot}/>
     </div>
   )
 }
