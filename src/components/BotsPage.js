@@ -20,7 +20,7 @@ function BotsPage() {
     return <h2>Just a while, be patient a little</h2>
    }
    
-
+   //delete button forever after clicking the delete button
    function deleteBot(bot){
     fetch(`http://localhost:8002/bots/${bot.id}`,{
       method: 'DELETE',
@@ -35,16 +35,20 @@ function BotsPage() {
      })
    }
 
+
+     //click function to add & remove bots to bot army when clicked
    function addBot(bot, inArmy) {
     //inArmy === true if bot is already in botArmy
     if (botArmy.includes(bot) && inArmy === true) {
       setBotArmy(botArmy.filter(({id}) => id !== bot.id));
-      //remove bot from BotArmy state
+      //remove bot from botArmy state
     }
      else if (botArmy.includes(bot) === false) {
         setBotArmy(botArmy => [...botArmy, bot])
+        //add to botarmy
     }
 }
+
 
   return (
     <div>
