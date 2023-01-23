@@ -26,29 +26,11 @@ As a user, I should be able to:
 
 ## Setup
 
-JSON server used to render the transactions;
+JSON server used to render the Bots;
 
 
 Go to "https://json-bot-server.onrender.com/bots" . This is a deployed server
 
-## What You Already Have
-
-`BotPage` is the highest component below App, and serves as the main container
-for all of the pieces of the page.
-
-`BotCollection` and `YourBotArmy` are container components, which are children
-of `BotPage`. `BotCollection` is where all the bots will be displayed, while
-`YourBotArmy` (the green portion on the top of the screen) will only display the
-bots that have been selected by the user.
-
-`BotCard` and `BotSpecs` are presentational components that have been provided
-for you that will render out information about an individual bot formatted for a
-list view and for a full view, respectively. They are pre-styled, and it is your
-responsibility to get the data into them.
-
-All of the code to style the page has been written for you, meaning that you
-should be adding to the code rather than editing it; however, if your finished
-product has some styling issues, don't worry too much about it.
 
 
 ## Explanation
@@ -73,7 +55,7 @@ Mapped the data to the component using .map() method completing the first delive
 4. Added a delete metod to make sure once the delete button is clicked it deletes the bot from the DOM and server completing the last deliverable
          
 ## LINK
-Here lies the link to the live site
+Here lies the link to the live site https://deluxe-travesseiro-786c2a.netlify.app/
 
 
 ## Author
