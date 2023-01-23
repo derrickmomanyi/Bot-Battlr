@@ -1,8 +1,8 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function YourBotArmy({botArmy, addBot, deleteBot}) {
-  
+function YourBotArmy({botArmy, addBot, deleteBot}) {                                           // destructured props passed as arguments to YourBotArmy component
+                                                                                                //passed data to BotCard component as props
     const displayArmyBots = botArmy.map((bot) => (
       <BotCard key = {bot.id} bot = {bot} inArmy = {true} deleteBot = {deleteBot} addBot = {addBot}/>
     ))

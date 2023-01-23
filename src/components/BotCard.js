@@ -9,7 +9,7 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({ bot, addBot, inArmy, deleteBot}) {
+function BotCard({ bot, addBot, inArmy, deleteBot}) {                              // destructured props passed as arguments to BotCard component
 
   
   return (

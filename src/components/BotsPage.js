@@ -1,15 +1,15 @@
 import React, { useEffect, useState} from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
-import BotCard from "./BotCard";
 
-function BotsPage() {
+
+function BotsPage() {                                            //useState to update thhe fetched data and update bots into army
       
-   const [bots, setBots] = useState([])
+   const [bots, setBots] = useState([])                               
    const [botArmy, setBotArmy] = useState([])
 
-   useEffect(() => {
-      fetch("http://localhost:8002/bots")
+   useEffect(() => {                                                  //useEffect hook to fetch our data from server
+      fetch("https://json-bot-server.onrender.com/bots") 
       .then((res) => res.json())
       .then((bots) => setBots(bots))
    }, [])
@@ -21,7 +21,7 @@ function BotsPage() {
    
    //delete button forever after clicking the delete button
    function deleteBot(bot){
-    fetch(`http://localhost:8002/bots/${bot.id}`,{
+    fetch(`https://json-bot-server.onrender.com/bots/${bot.id}`,{
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json"
