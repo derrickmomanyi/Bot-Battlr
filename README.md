@@ -1,37 +1,35 @@
-# React Immersive Code Challenge: Bot Battlr
+#  Code Challenge: Bot Battlr
 
-Welcome to **Bot Battlr**, the one and only spot in the known universe where you
-can custom build your own Bot Army! This is our app:
+## Table of Contents
+This README consists of the Project Requirements, Setup, Author, Licences and a few explanations
 
-![checkpoint demo](https://curriculum-content.s3.amazonaws.com/phase-2/phase-2-hooks-code-challenge-bot-battlr/checkpoint_demo.gif)
 
-Here's the scenario: a galactic overlord has hired you, a galactic web
-developer, to develop a galactic web app that will allow them to browse through
-a list of robots, view a robot's details, and, enlist a bot into their army.
+## Project Requirements
 
-## Instructions
+For this project, I’ll be building out a React application where you
+can custom build your own Bot Army!
 
-For this project, you’ll be building out a React application that displays a
-list of available bots, among other features. Try your best to find the right
-places to insert code into the established code base.
+As a user, I should be able to:
 
-Part of what this code challenge is testing is your ability to follow given
-instructions. While you will definitely have a significant amount of freedom in
-how you implement the features, be sure to carefully read the directions for
-setting up the application.
+- See profiles of all bots rendered in `BotCollection`.
+
+- Add an individual bot to my army by clicking on it. The selected bot should
+  render in the `YourBotArmy` component. The bot can be enlisted only **once**.
+  The bot **does not** disappear from the `BotCollection`.
+
+- Release a bot from my army by clicking on it. The bot disappears from the
+  `YourBotArmy` component.
+
+- Discharge a bot from their service forever, by clicking the red button marked
+  "x", which would delete the bot both from the backend and from the
+  `YourBotArmy` on the frontend.
 
 ## Setup
 
-After unbundling the project:
+JSON server used to render the transactions;
 
-1. Run `npm install` in your terminal.
-2. Run `npm run server`. This will run your backend on port `8002`.
-3. In a new terminal, run `npm start`. This will run your React app on port `8000`.
 
-Make sure to open [http://localhost:8002/bots](http://localhost:8002/bots) in
-the browser to verify that your backend is working before you proceed!
-
-The base URL for your backend is: `http://localhost:8002`
+Go to "https://json-bot-server.onrender.com/bots" . This is a deployed server
 
 ## What You Already Have
 
@@ -52,88 +50,40 @@ All of the code to style the page has been written for you, meaning that you
 should be adding to the code rather than editing it; however, if your finished
 product has some styling issues, don't worry too much about it.
 
-## Core Deliverables
 
-As a user, I should be able to:
+## Explanation
 
-- See profiles of all bots rendered in `BotCollection`.
-- Add an individual bot to my army by clicking on it. The selected bot should
-  render in the `YourBotArmy` component. The bot can be enlisted only **once**.
-  The bot **does not** disappear from the `BotCollection`.
-- Release a bot from my army by clicking on it. The bot disappears from the
-  `YourBotArmy` component.
-- Discharge a bot from their service forever, by clicking the red button marked
-  "x", which would delete the bot both from the backend and from the
-  `YourBotArmy` on the frontend.
+The step by step thought process has been commented in the respective components
 
-### Endpoints for Core Deliverables
+The Component Hierarchy is;
+App
+   ├──BotsPage
+      ├── BotCollection  ├── BotCard
+      └── YourBotArmy    ├── BotCard
+      
+ 1. Displayed the data to the BotCard component by passing props through:
+ BotsPage => BotCollection => BotCard
+Mapped the data to the component using .map() method completing the first deliverable
 
-#### GET /bots
 
-Example Response:
+2. Added a bot to the YourBot Army component by creating a click function that spreads the selected bot by id and renders it to the DOM completing the second deliverable
 
-```json
-[
-  {
-    "id": 101,
-    "name": "wHz-93",
-    "health": 94,
-    "damage": 20,
-    "armor": 63,
-    "bot_class": "Support",
-    "catchphrase": "1010010101001101100011000111101",
-    "avatar_url": "https://robohash.org/nostrumrepellendustenetur.png?size=300x300&set=set1",
-    "created_at": "2018-10-02T19:55:10.800Z",
-    "updated_at": "2018-10-02T19:55:10.800Z"
-  },
-  {
-    "id": 102,
-    "name": "RyM-66",
-    "health": 86,
-    "damage": 36,
-    "armor": 77,
-    "bot_class": "Medic",
-    "catchphrase": "0110011100000100011110100110011000011001",
-    "avatar_url": "https://robohash.org/quidemconsequaturaut.png?size=300x300&set=set1",
-    "created_at": "2018-10-02T19:55:10.827Z",
-    "updated_at": "2018-10-02T19:55:10.827Z"
-  }
-]
-```
+3. Added an if statement to ensure that once the bot is clicked from the YourBitArmy component it is released back to the BotCard component completing the third deliverable
 
-#### DELETE /bots/:id
+4. Added a delete metod to make sure once the delete button is clicked it deletes the bot from the DOM and server completing the last deliverable
+         
+## LINK
+Here lies the link to the live site
 
-Example Response:
 
-```json
-{}
-```
+## Author
+Derrick Momanyi
 
-## Advanced Deliverables
+Github: @derrickmomanyi
 
-These deliverables are not required to pass the code challenge, but if you have
-the extra time, or even after the code challenge, they are a great way to
-stretch your skills.
+## License
+Copyright © 2022 Derrick Momanyi This project is MORINGA SCHOOL licensed.
 
-> Note: If you are going to attempt these advanced deliverables, please be sure
-> to have a working commit with all the Core Deliverables first!
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-As a user, I should be able to:
-
-- Choose if I want to enlist a bot into my army or just see their data. Clicking
-  on the card should instead display a show view (`BotSpecs`) for that bot,
-  which should replace `BotsCollection`. BotSpecs should have two buttons: one
-  to go back to the list view and another to enlist that bot. Your app could
-  look like the following:
-
-![Full demo](https://curriculum-content.s3.amazonaws.com/phase-2/phase-2-hooks-code-challenge-bot-battlr/full_demo.gif)
-
-- Sort bots by their health, damage or armor. For this, create a new component,
-  `SortBar`.
-- When I enlist a bot it will be **removed** from the `BotCollection` and added
-  to `YourBotArmy`.
-- Filter bots by their class. We can select a few filters at the same time.
-- Sort bots by their health, damage or armor. For this, create a new component,
-  `SortBar`.
-- Only enlist **one** bot from each `bot_class`. The classes are
-  `["Support", "Medic", "Assault", "Defender", "Captain", "Witch"]`.
+http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License
